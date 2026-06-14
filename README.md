@@ -31,7 +31,7 @@ Proyek ini dibuat dan dilatih di lingkungan berbasis Jupyter Notebook / Google C
    pip install tensorflow albumentations scikit-image scikit-learn opencv-python-headless pandas seaborn matplotlib
    ```
 4. **Jalankan Cell secara Berurutan:**
-   - Jalankan proses Mounting Google Drive (jika menggunakan Colab)
+   - Jalankan proses Mounting Google Drive (jika menggunakan Colab).
    - Jalankan bagian Preprocessing & Feature Extraction.
    - Jalankan tahap pelatihan dan evaluasi masing-masing model.
 5. **Menyimpan Model:**
