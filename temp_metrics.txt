@@ -1,0 +1,258 @@
+Drive already mounted at /content/drive; to attempt to forcibly remount, call drive.mount("/content/drive", force_remount=True).
+
+Requirement already satisfied: albumentations in /usr/local/lib/python3.12/dist-packages (2.0.8)
+Requirement already satisfied: numpy>=1.24.4 in /usr/local/lib/python3.12/dist-packages (from albumentations) (2.0.2)
+Requirement already satisfied: scipy>=1.10.0 in /usr/local/lib/python3.12/dist-packages (from albumentations) (1.16.3)
+Requirement already satisfied: PyYAML in /usr/local/lib/python3.12/dist-packages (from albumentations) (6.0.3)
+Requirement already satisfied: pydantic>=2.9.2 in /usr/local/lib/python3.12/dist-packages (from albumentations) (2.12.3)
+Requirement already satisfied: albucore==0.0.24 in /usr/local/lib/python3.12/dist-packages (from albumentations) (0.0.24)
+Requirement already satisfied: opencv-python-headless>=4.9.0.80 in /usr/local/lib/python3.12/dist-packages (from albumentations) (4.13.0.92)
+Requirement already satisfied: stringzilla>=3.10.4 in /usr/local/lib/python3.12/dist-packages (from albucore==0.0.24->albumentations) (4.6.2)
+Requirement already satisfied: simsimd>=5.9.2 in /usr/local/lib/python3.12/dist-packages (from albucore==0.0.24->albumentations) (6.5.16)
+Requirement already satisfied: annotated-types>=0.6.0 in /usr/local/lib/python3.12/dist-packages (from pydantic>=2.9.2->albumentations) (0.7.0)
+Requirement already satisfied: pydantic-core==2.41.4 in /usr/local/lib/python3.12/dist-packages (from pydantic>=2.9.2->albumentations) (2.41.4)
+Requirement already satisfied: typing-extensions>=4.14.1 in /usr/local/lib/python3.12/dist-packages (from pydantic>=2.9.2->albumentations) (4.15.0)
+Requirement already satisfied: typing-inspection>=0.4.2 in /usr/local/lib/python3.12/dist-packages (from pydantic>=2.9.2->albumentations) (0.4.2)
+
+Loading data from: /content/drive/MyDrive/Machine Learning I/UAS/ML & DL/dataset/split_dataset
+Train samples: 1111
+Validation samples: 238
+Test samples: 239
+
+TensorFlow datasets created successfully:
+Train Dataset: <_PrefetchDataset element_spec=(TensorSpec(shape=(None, 224, 224, 3), dtype=tf.float32, name=None), TensorSpec(shape=(None,), dtype=tf.int64, name=None))>
+Validation Dataset: <_PrefetchDataset element_spec=(TensorSpec(shape=(None, 224, 224, 3), dtype=tf.float32, name=None), TensorSpec(shape=(None,), dtype=tf.int64, name=None))>
+Test Dataset: <_PrefetchDataset element_spec=(TensorSpec(shape=(None, 224, 224, 3), dtype=tf.float32, name=None), TensorSpec(shape=(None,), dtype=tf.int64, name=None))>
+
+Displaying augmented samples for 'readable' class:
+Sample 1 (readable): crop_0_H6832CV_jpg.rf.314064e6cc49e4e4d283ea9b6e431954.jpg
+
+Sample 2 (readable): 118.E 4885 QZ-12-20.jpeg
+
+
+Displaying augmented samples for 'unreadable' class:
+Sample 1 (unreadable): UNREADABLE_crop_0_IMG_20260423_131552.jpg
+
+Sample 2 (unreadable): UNREADABLE_crop_0_IMG_20260423_130526.jpg
+
+Total training samples: 1111
+Total validation samples: 238
+Total test samples: 239
+
+Requirement already satisfied: scikit-image in /usr/local/lib/python3.12/dist-packages (0.25.2)
+Requirement already satisfied: numpy>=1.24 in /usr/local/lib/python3.12/dist-packages (from scikit-image) (2.0.2)
+Requirement already satisfied: scipy>=1.11.4 in /usr/local/lib/python3.12/dist-packages (from scikit-image) (1.16.3)
+Requirement already satisfied: networkx>=3.0 in /usr/local/lib/python3.12/dist-packages (from scikit-image) (3.6.1)
+Requirement already satisfied: pillow>=10.1 in /usr/local/lib/python3.12/dist-packages (from scikit-image) (11.3.0)
+Requirement already satisfied: imageio!=2.35.0,>=2.33 in /usr/local/lib/python3.12/dist-packages (from scikit-image) (2.37.3)
+Requirement already satisfied: tifffile>=2022.8.12 in /usr/local/lib/python3.12/dist-packages (from scikit-image) (2026.4.11)
+Requirement already satisfied: packaging>=21 in /usr/local/lib/python3.12/dist-packages (from scikit-image) (26.2)
+Requirement already satisfied: lazy-loader>=0.4 in /usr/local/lib/python3.12/dist-packages (from scikit-image) (0.5)
+
+Ekstraksi Data Training...
+
+Ekstraksi HOG+LBP: 100%|██████████| 1111/1111 [00:33<00:00, 33.06it/s]
+
+
+Ekstraksi Data Validation...
+
+Ekstraksi HOG+LBP: 100%|██████████| 238/238 [00:05<00:00, 40.88it/s]
+
+
+Ekstraksi Data Testing...
+
+Ekstraksi HOG+LBP: 100%|██████████| 239/239 [00:03<00:00, 67.74it/s]
+
+
+Dimensi Akhir X_train_scaled: (1111, 766)
+
+Memulai Grid Search Hyperparameter Tuning untuk SVM...
+Fitting 1 folds for each of 32 candidates, totalling 32 fits
+
+Training selesai dalam 22.14 detik.
+
+
+=== HASIL HYPERPARAMETER TUNING ===
+Parameter Terbaik : {'C': 1, 'gamma': 'scale', 'kernel': 'rbf'}
+Akurasi Validation: 95.38%
+
+=== EVALUASI PADA DATA TESTING (TEST SET) ===
+Akurasi Test: 94.14%
+
+Classification Report (Test Set):
+              precision    recall  f1-score   support
+
+    readable       0.96      0.98      0.97       219
+  unreadable       0.69      0.55      0.61        20
+
+    accuracy                           0.94       239
+   macro avg       0.82      0.76      0.79       239
+weighted avg       0.94      0.94      0.94       239
+
+
+Model dan Scaler berhasil diamankan secara berpasangan!
+
+Menghitung Learning Curve HOG+LBP...
+
+/usr/local/lib/python3.12/dist-packages/sklearn/model_selection/_validation.py:528: FitFailedWarning: 
+4 fits failed out of a total of 5.
+The score on these train-test partitions for these parameters will be set to nan.
+If these failures are not expected, you can try to debug them by setting error_score='raise'.
+
+Below are more details about the failures:
+--------------------------------------------------------------------------------
+4 fits failed with the following error:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/dist-packages/sklearn/model_selection/_validation.py", line 866, in _fit_and_score
+    estimator.fit(X_train, y_train, **fit_params)
+  File "/usr/local/lib/python3.12/dist-packages/sklearn/base.py", line 1389, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/sklearn/svm/_base.py", line 207, in fit
+    y = self._validate_targets(y)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/sklearn/svm/_base.py", line 751, in _validate_targets
+    raise ValueError(
+ValueError: The number of classes has to be greater than one; got 1 class
+
+  warnings.warn(some_fits_failed_message, FitFailedWarning)
+
+[[214   5]
+ [  9  11]]
+['readable', 'unreadable']
+
+Bobot Kelas untuk Training: {0: np.float64(0.5456777996070727), 1: np.float64(5.973118279569892)}
+
+Trainable Layers     : 157
+Non-Trainable Layers : 0
+
+Memulai Fine-Tuning Model 2 (MobileNetV3)...
+Epoch 1/25
+[1m35/35[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m108s[0m 2s/step - accuracy: 0.6427 - auc: 0.4424 - loss: 0.8711 - recall: 0.2581 - val_accuracy: 0.9160 - val_auc: 0.8544 - val_loss: 0.6118 - val_recall: 0.0000e+00
+Epoch 2/25
+[1m35/35[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m68s[0m 2s/step - accuracy: 0.6427 - auc: 0.6110 - loss: 0.6954 - recall: 0.4624 - val_accuracy: 0.9160 - val_auc: 0.8711 - val_loss: 0.6257 - val_recall: 0.0000e+00
+Epoch 3/25
+[1m35/35[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m80s[0m 2s/step - accuracy: 0.6274 - auc: 0.6199 - loss: 0.6899 - recall: 0.5161 - val_accuracy: 0.9160 - val_auc: 0.8370 - val_loss: 0.6396 - val_recall: 0.0000e+00
+Epoch 4/25
+[1m35/35[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m67s[0m 2s/step - accuracy: 0.6220 - auc: 0.6302 - loss: 0.6702 - recall: 0.4839 - val_accuracy: 0.9160 - val_auc: 0.7962 - val_loss: 0.6544 - val_recall: 0.0000e+00
+Epoch 5/25
+[1m35/35[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m68s[0m 2s/step - accuracy: 0.6598 - auc: 0.6973 - loss: 0.6348 - recall: 0.6344 - val_accuracy: 0.9160 - val_auc: 0.6594 - val_loss: 0.6618 - val_recall: 0.0000e+00
+Epoch 6/25
+[1m35/35[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m66s[0m 2s/step - accuracy: 0.6562 - auc: 0.7023 - loss: 0.6409 - recall: 0.6559 - val_accuracy: 0.9160 - val_auc: 0.6760 - val_loss: 0.6661 - val_recall: 0.0000e+00
+Epoch 7/25
+[1m35/35[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m68s[0m 2s/step - accuracy: 0.6697 - auc: 0.7177 - loss: 0.6221 - recall: 0.6344 - val_accuracy: 0.9160 - val_auc: 0.4599 - val_loss: 0.6582 - val_recall: 0.0000e+00
+Epoch 8/25
+[1m35/35[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m69s[0m 2s/step - accuracy: 0.6976 - auc: 0.7678 - loss: 0.5725 - recall: 0.7097 - val_accuracy: 0.9160 - val_auc: 0.4267 - val_loss: 0.6396 - val_recall: 0.0000e+00
+Epoch 9/25
+[1m35/35[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m68s[0m 2s/step - accuracy: 0.7102 - auc: 0.7972 - loss: 0.5533 - recall: 0.7419 - val_accuracy: 0.9160 - val_auc: 0.3784 - val_loss: 0.6250 - val_recall: 0.0000e+00
+Epoch 9: early stopping
+Restoring model weights from the end of the best epoch: 2.
+
+[1m8/8[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m6s[0m 531ms/step
+
+Best Threshold : 0.45
+Best F1 Score  : 0.1569
+
+
+=== EVALUASI MOBILENETV3 PADA DATA TESTING ===
+[1m8/8[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m4s[0m 383ms/step
+Akurasi Test MobileNetV3: 8.79%
+
+              precision    recall  f1-score   support
+
+    readable       1.00      0.00      0.01       219
+  unreadable       0.08      1.00      0.16        20
+
+    accuracy                           0.09       239
+   macro avg       0.54      0.50      0.08       239
+weighted avg       0.92      0.09      0.02       239
+
+
+=== EVALUASI RE-RUN MOBILENETV3 ===
+Menghitung akurasi data training (bisa memakan waktu)...
+Menghitung akurasi data validation...
+Loss       -> Train: 0.6267 | Val: 0.6257
+Accuracy   -> Train: 0.9163 | Val: 0.9160
+
+[[  1 218]
+ [  0  20]]
+
+Calculating final evaluations...
+
+Dataset         | Accuracy   | AUC       
+---------------------------------------------
+Training        |    91.63% |   0.6669
+Validation      |    91.60% |   0.8711
+Testing         |    91.63% |   0.7984
+
+[1m8/8[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m5s[0m 617ms/step
+0.44841483
+0.46612886
+0.45842716
+
+[0.8710906505584717, 0.6953946352005005, 0.6899265050888062, 0.6702159643173218, 0.6347798705101013, 0.6409181356430054, 0.6221109628677368, 0.5724626183509827, 0.5533474683761597]
+[0.6118406653404236, 0.6257413625717163, 0.6396479606628418, 0.6543567180633545, 0.6618152856826782, 0.6660524010658264, 0.658233106136322, 0.6396116614341736, 0.6249816417694092]
+
+[1m8/8[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m7s[0m 845ms/step
+
+Readable
+0.44987085
+0.4658385
+0.45812973
+Unreadable
+0.45060632
+0.46628067
+0.4618915
+
+MobileNetV3 model saved successfully to: /content/drive/MyDrive/Machine Learning I/UAS/ML & DL/kedua/mobilenetv3_finetuned_model.keras
+
+Ekstrak fitur dari dataset (Train, Val, Test)...
+Memulai ekstraksi fitur (Layer-by-Layer Inference)...
+Memulai ekstraksi fitur (Layer-by-Layer Inference)...
+Memulai ekstraksi fitur (Layer-by-Layer Inference)...
+
+Ekstraksi Selesai!
+Dimensi Fitur Training: (1111, 576)
+
+
+Melatih SVM pada fitur CNN...
+
+
+=== EVALUASI HYBRID SVM PADA DATA VALIDATION ===
+              precision    recall  f1-score   support
+
+    readable       0.97      0.96      0.97       218
+  unreadable       0.64      0.70      0.67        20
+
+    accuracy                           0.94       238
+   macro avg       0.80      0.83      0.82       238
+weighted avg       0.94      0.94      0.94       238
+
+
+=== EVALUASI HYBRID SVM PADA DATA TESTING ===
+Akurasi Test Hybrid SVM: 91.21%
+
+              precision    recall  f1-score   support
+
+    readable       0.96      0.95      0.95       219
+  unreadable       0.48      0.55      0.51        20
+
+    accuracy                           0.91       239
+   macro avg       0.72      0.75      0.73       239
+weighted avg       0.92      0.91      0.91       239
+
+Confusion Matrix:
+[[207  12]
+ [  9  11]]
+
+All components successfully saved to: /content/drive/MyDrive/Machine Learning I/UAS/ML & DL/kedua/
+
+Menghitung Learning Curve Hybrid SVM...
+
+Total errors found: 12
+
+Semua model berhasil di-load. Memulai kalkulasi probabilitas...
+
+Ekstraksi HOG+LBP: 100%|██████████| 239/239 [00:02<00:00, 116.17it/s]
+
+[1m8/8[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m6s[0m 532ms/step
